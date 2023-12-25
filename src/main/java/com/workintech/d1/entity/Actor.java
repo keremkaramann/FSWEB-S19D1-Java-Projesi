@@ -26,12 +26,16 @@ public class Actor {
     @Size(min=2,max=45, message = ("Name size must be between 2 and 45"))
     private String firstName;
 
+    @NotNull
+    @Size(min=2,max=45, message = ("Name size must be between 2 and 45"))
     @Column(name = "last_name")
     private String lastName;
 
+    @NotNull
     @Enumerated(EnumType.STRING)
     private Gender gender;
 
+    @NotNull
     @Column(name = "birth_date")
     private LocalDate birthDate;
 
