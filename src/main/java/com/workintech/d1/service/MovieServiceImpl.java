@@ -2,8 +2,11 @@ package com.workintech.d1.service;
 
 import com.workintech.d1.entity.Actor;
 import com.workintech.d1.entity.Movie;
+import com.workintech.d1.exceptions.GeneralException;
+import com.workintech.d1.exceptions.GlobalExceptionHandler;
 import com.workintech.d1.repository.MovieRepository;
 import lombok.AllArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -25,7 +28,7 @@ public class MovieServiceImpl implements MovieService {
         if (optionalMovie.isPresent()) {
             return optionalMovie.get();
         }
-        throw new RuntimeException("id not found");
+        throw new GeneralException("Given id is not found:" + id, HttpStatus.NOT_FOUND);
     }
 
     @Override
@@ -40,6 +43,6 @@ public class MovieServiceImpl implements MovieService {
             movieRepository.delete(movie);
             return movie;
         }
-        throw new RuntimeException("id not found");
+        throw new GeneralException("Given id is not found:" + id, HttpStatus.NOT_FOUND);
     }
 }

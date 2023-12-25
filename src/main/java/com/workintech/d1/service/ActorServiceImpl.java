@@ -1,8 +1,11 @@
 package com.workintech.d1.service;
 
 import com.workintech.d1.entity.Actor;
+import com.workintech.d1.exceptions.GeneralException;
+import com.workintech.d1.exceptions.GlobalExceptionHandler;
 import com.workintech.d1.repository.ActorRepository;
 import lombok.AllArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -21,11 +24,12 @@ public class ActorServiceImpl implements ActorService{
 
     @Override
     public Actor findById(long id) {
+
         Optional<Actor> optionalActor = actorRepository.findById(id);
         if(optionalActor.isPresent()){
             return optionalActor.get();
         }
-        throw new RuntimeException("id not found");
+        throw new GeneralException("Given id is not exist: " + id, HttpStatus.NOT_FOUND );
     }
 
     @Override
@@ -40,6 +44,6 @@ public class ActorServiceImpl implements ActorService{
             actorRepository.delete(actor);
             return actor;
         }
-        throw new RuntimeException("id not found");
+        throw new GeneralException("Given id is not exist: " + id, HttpStatus.NOT_FOUND);
     }
 }
