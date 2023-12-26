@@ -2,11 +2,11 @@ package com.workintech.d1.controller;
 
 import com.workintech.d1.dto.ActorRequest;
 import com.workintech.d1.dto.ActorResponse;
-import com.workintech.d1.dto.MovieActorRequest;
+
 import com.workintech.d1.dto.MovieResponse;
 import com.workintech.d1.entity.Actor;
 import com.workintech.d1.entity.Movie;
-import com.workintech.d1.service.ActorService;
+
 import com.workintech.d1.service.MovieService;
 import lombok.AllArgsConstructor;
 import org.springframework.validation.annotation.Validated;
