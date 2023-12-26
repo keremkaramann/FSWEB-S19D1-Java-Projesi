@@ -1,6 +1,9 @@
 package com.workintech.d1.dto;
 
-import java.time.LocalDate;
+import com.workintech.d1.entity.Movie;
 
-public record ActorResponse(long id , String firstName, String lastName, String gender, LocalDate birthDate) {
+import java.time.LocalDate;
+import java.util.List;
+
+public record ActorResponse(long id , String firstName, String lastName, LocalDate birthDate, List<Movie> movies) {
 }

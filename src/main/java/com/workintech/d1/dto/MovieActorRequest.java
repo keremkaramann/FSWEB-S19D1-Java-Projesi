@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 import java.util.List;
 @Data
 @NoArgsConstructor
-public class MovieActorRequest {
-    private Movie movie;
-    private List<Actor> actorList;
+public class ActorRequest {
+    private List<Movie> movie;
+    private Actor actorList;
 }
