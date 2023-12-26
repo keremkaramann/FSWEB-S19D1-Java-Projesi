@@ -2,7 +2,6 @@ package com.workintech.d1.controller;
 
 import com.workintech.d1.dto.ActorRequest;
 import com.workintech.d1.dto.ActorResponse;
-import com.workintech.d1.dto.MovieActorRequest;
 import com.workintech.d1.entity.Actor;
 import com.workintech.d1.entity.Movie;
 import com.workintech.d1.service.ActorService;
@@ -56,6 +55,8 @@ public class ActorController {
 
     @DeleteMapping("/{id}")
     public ActorResponse delete(@PathVariable long id) {
-
+        Actor foundActor = actorService.findById(id);
+        actorService.delete(id);
+        return Converter.actorResponseConvert(foundActor);
     }
 }
